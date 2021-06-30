@@ -190,6 +190,8 @@ int main()
 	Shader shader("Shaders/modelLoading.vs", "Shaders/modelLoading.frag");
 
 	Model BobEsponja((char*)"Models/spongebob-squarepants/bobesponja.obj");
+	Model Poste((char*)"Models/Fachada/Poste.obj");
+	Model Barril((char*)"Models/Objetos int/barril.obj");
 	
 	// Build and compile our shader program
 
@@ -508,14 +510,28 @@ int main()
 
 
 
-		//Carga de modelo
+		//Carga de modelos
 		view = camera.GetViewMatrix();
 		glm::mat4 model(1);
 		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
 		model = glm::translate(model,glm::vec3(posX,posY,posZ));
 		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		BobEsponja.Draw(shader);
+
+		view = camera.GetViewMatrix();
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::translate(model, glm::vec3(3.0f, 0.0f, 3.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.25f, 0.5f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Barril.Draw(shader);
+
+		view = camera.GetViewMatrix();
+		model = glm::scale(model, glm::vec3(2.0f, 4.0f, 2.0f));
+;		model = glm::translate(model, glm::vec3(4.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Poste.Draw(shader);
 
 		//Personaje
 		//view = camera.GetViewMatrix();
