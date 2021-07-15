@@ -183,9 +183,9 @@ int main()
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-	/*Shader lightingShader("Shaders/lighting.vs", "Shaders/lighting.frag");
+	Shader lightingShader("Shaders/lighting.vs", "Shaders/lighting.frag");
 	Shader lampShader("Shaders/lamp.vs", "Shaders/lamp.frag");
-	Shader SkyBoxshader("Shaders/SkyBox.vs", "Shaders/SkyBox.frag");*/
+	//Shader SkyBoxshader("Shaders/SkyBox.vs", "Shaders/SkyBox.frag");
 
 	Shader shader("Shaders/modelLoading.vs", "Shaders/modelLoading.frag");
 
@@ -424,10 +424,10 @@ int main()
 		// by using 'Uniform buffer objects', but that is something we discuss in the 'Advanced GLSL' tutorial.
 		// == ==========================
 		// Directional light
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.direction"), -0.2f, -1.0f, -0.3f);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), 0.0f, 1.0f, 1.0f);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.diffuse"), 0.4f, 0.4f, 0.4f);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.specular"), 0.5f, 0.5f, 0.5f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.direction"), -0.2f, -1.0f, -0.3f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.ambient"), 0.0f, 1.0f, 1.0f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.diffuse"), 0.4f, 0.4f, 0.4f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.specular"), 0.5f, 0.5f, 0.5f);
 
 
 		//// Point light 1
@@ -533,97 +533,37 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Poste.Draw(shader);
 
-		//Personaje
-		//view = camera.GetViewMatrix();
-		//glm::mat4 model(1);
-		//tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
-		//model = glm::translate(model,glm::vec3(posX,posY,posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//Torso.Draw(lightingShader);
-		////Pierna Izq
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(tmp, glm::vec3(-0.5f, 0.0f, -0.1f));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//model = glm::rotate(model, glm::radians(-rotRodIzq), glm::vec3(1.0f, 0.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//PiernaDer.Draw(lightingShader);
-		////Pie Izq
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//BotaDer.Draw(lightingShader);
-
-		////Pierna Der
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(tmp, glm::vec3(0.5f, 0.0f, -0.1f));
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//PiernaIzq.Draw(lightingShader);
-		////Pie Der
-		//view = camera.GetViewMatrix();
-		//model = glm::translate(model, glm::vec3(0, -0.9f, -0.2f));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//BotaDer.Draw(lightingShader);
-
-		////Brazo derecho
-		//view = camera.GetViewMatrix();
-		//model = glm::mat4(1);
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		//model = glm::translate(model, glm::vec3(-0.75f, 2.5f, 0));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//BrazoDer.Draw(lightingShader);
-
-		////Brazo Izquierdo
-		//view = camera.GetViewMatrix();
-		//model = glm::mat4(1);
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0f));
-		//model = glm::translate(model, glm::vec3(0.75f, 2.5f, 0));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//BrazoIzq.Draw(lightingShader);
-
-		////Cabeza
-		//view = camera.GetViewMatrix();
-		//model = glm::mat4(1);
-		//model = glm::translate(model, glm::vec3(posX, posY, posZ));
-		//model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		//model = glm::translate(model, glm::vec3(0.0f, 2.5f, 0));
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//Cabeza.Draw(lightingShader);
+		
 
 
 		glBindVertexArray(0);
 
 
-		// Also draw the lamp object, again binding the appropriate shader
-		//lampShader.Use();
-		//// Get location objects for the matrices on the lamp shader (these could be different on a different shader)
-		//modelLoc = glGetUniformLocation(lampShader.Program, "model");
-		//viewLoc = glGetUniformLocation(lampShader.Program, "view");
-		//projLoc = glGetUniformLocation(lampShader.Program, "projection");
+		 //Also draw the lamp object, again binding the appropriate shader
+		lampShader.Use();
+		// Get location objects for the matrices on the lamp shader (these could be different on a different shader)
+		modelLoc = glGetUniformLocation(lampShader.Program, "model");
+		viewLoc = glGetUniformLocation(lampShader.Program, "view");
+		projLoc = glGetUniformLocation(lampShader.Program, "projection");
 
-		// Set matrices
-		//glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
-		//glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
-		//model = glm::mat4(1);
-		//model = glm::translate(model, lightPos);
-		////model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
-		//glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//// Draw the light object (using light's vertex attributes)
-		//glBindVertexArray(lightVAO);
-		//for (GLuint i = 0; i < 4; i++)
-		//{
-		//	model = glm::mat4(1);
-		//	model = glm::translate(model, pointLightPositions[i]);
-		//	model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
-		//	glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		//	glDrawArrays(GL_TRIANGLES, 0, 36);
-		//}
-		//glBindVertexArray(0);
+		 //Set matrices
+		glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+		glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+		model = glm::mat4(1);
+		model = glm::translate(model, lightPos);
+		//model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		// Draw the light object (using light's vertex attributes)
+		glBindVertexArray(lightVAO);
+		for (GLuint i = 0; i < 4; i++)
+		{
+			model = glm::mat4(1);
+			model = glm::translate(model, pointLightPositions[i]);
+			model = glm::scale(model, glm::vec3(0.2f)); // Make it a smaller cube
+			glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+		}
+		glBindVertexArray(0);
 
 
 		// Draw skybox as last
