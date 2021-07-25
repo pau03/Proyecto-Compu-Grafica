@@ -1,0 +1,134 @@
+# Blender MTL File: 'kk1.blend'
+# Material Count: 11
+
+newmtl 01_-_Default
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Mr. Krabs Skin.fw.png
+map_d Mr. Krabs Skin.fw.png
+
+newmtl 02_-_Default.001
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Mr. Krabs Shirt1.fw.png
+map_d Mr. Krabs Shirt1.fw.png
+
+newmtl 03_-_Default.001
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Mr. Krabs Pants.fw.png
+map_d Mr. Krabs Pants.fw.png
+
+newmtl 07_-_Default
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Mr. Krabs Belt1.fw.png
+map_d Mr. Krabs Belt1.fw.png
+
+newmtl 08_-_Default
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Mr. Krabs Eye Brows.fw.png
+map_d Mr. Krabs Eye Brows.fw.png
+
+newmtl 09_-_Default
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Mr. Krabs Eyes.fw.png
+map_d Mr. Krabs Eyes.fw.png
+
+newmtl 13_-_Default
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Mr. Krabs Eyes2.fw.png
+map_d Mr. Krabs Eyes2.fw.png
+
+newmtl 15_-_Default
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Mr. Krabs Mouth.png
+map_d Mr. Krabs Mouth.png
+
+newmtl 19_-_Default
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Mr. Krabs Shirt2.fw.png
+map_d Mr. Krabs Shirt2.fw.png
+
+newmtl 20_-_Default
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Mr. Krabs Pants2.png
+map_d Mr. Krabs Pants2.png
+
+newmtl 21_-_Default
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Mr. Krabs Belt2.fw.png
+map_d Mr. Krabs Belt2.fw.png

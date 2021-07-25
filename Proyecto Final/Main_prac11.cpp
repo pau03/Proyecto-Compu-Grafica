@@ -42,7 +42,6 @@ GLfloat lastY = HEIGHT / 2.0;
 bool keys[1024];
 bool firstMouse = true;
 float range = 0.0f;
-float rot = 0.0f;
 
 
 // Light attributes
@@ -50,6 +49,24 @@ glm::vec3 lightPos(0.0f, 0.0f, 0.0f);
 glm::vec3 PosIni(-95.0f, 1.0f, -45.0f);
 bool active;
 
+//Variables para animaciones
+float movCanX = 0.0;
+float rotCan = 0.0;
+float rotBrazo = 0.0f;
+float movBurguerY = 0.0;
+float rotBurguer = 0.0;
+
+bool circuito1 = false;
+bool circuito2 = false;
+bool circuito3 = false;
+bool circuito4 = false;
+bool circuito5 = false;
+
+bool recorrido1 = true;
+bool recorrido2 = false;
+bool recorrido3 = true;
+bool recorrido4 = false;
+bool recorrido5 = false;
 
 // Deltatime
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
@@ -189,9 +206,19 @@ int main()
 
 	Shader shader("Shaders/modelLoading.vs", "Shaders/modelLoading.frag");
 
-	Model BobEsponja((char*)"Models/spongebob-squarepants/bobesponja.obj");
+
+	//Declaramos modelos
+
+	Model BobEsponja((char*)"Models/spongebob-squarepants/bobesponja_sinbrazo.obj");
+	Model Cangrejo((char*)"Models/spongebob-squarepants/doncangrejo.obj");
 	Model Poste((char*)"Models/Fachada/Poste.obj");
-	Model Barril((char*)"Models/Objetos int/barril.obj");
+	Model Brazo((char*)"Models/spongebob-squarepants/brazo_izq.obj");
+	Model Cangreburguer((char*)"Models/Objetos int/cangreburguer.obj");
+	Model Letreros((char*)"Models/Objetos int/letreros.obj");
+
+	Model Edificio((char*)"Models/Fachada/fachada.obj");
+	Model Puerta((char*)"Models/Fachada/puerta.obj");
+
 	
 	// Build and compile our shader program
 
@@ -506,35 +533,71 @@ int main()
 
 
 		glBindVertexArray(VAO);
+
+		/*Carga de modelos*/
 		glm::mat4 tmp = glm::mat4(1.0f); //Temp
+		
+		//Objetos animados
 
-
-
-		//Carga de modelos
 		view = camera.GetViewMatrix();
 		glm::mat4 model(1);
-		tmp = model = glm::translate(model, glm::vec3(0, 1, 0));
-		model = glm::translate(model,glm::vec3(posX,posY,posZ));
-		model = glm::rotate(model, glm::radians(rot), glm::vec3(0.0f, 1.0f, 0.0));
-		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
+		tmp = glm::translate(model, glm::vec3(PosIni.x, PosIni.y,PosIni.z));
+		model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		BobEsponja.Draw(shader);
 
 		view = camera.GetViewMatrix();
+		model = tmp;
+		model = glm::translate(model, glm::vec3(-2.43f, 1.0f, -1.15f));
+		model = glm::rotate(model, glm::radians(8.5f + rotBrazo), glm::vec3(0.0f, 0.0, 1.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-		model = glm::translate(model, glm::vec3(3.0f, 0.0f, 3.0f));
-		model = glm::scale(model, glm::vec3(0.5f, 0.25f, 0.5f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Barril.Draw(shader);
+		Brazo.Draw(shader);
 
 		view = camera.GetViewMatrix();
-		model = glm::scale(model, glm::vec3(2.0f, 4.0f, 2.0f));
-;		model = glm::translate(model, glm::vec3(4.0f, 0.0f, 0.0f));
+		model = tmp;
+		model = glm::translate(model, glm::vec3(-1.6f, movBurguerY + 1.24f, -1.17f));
+		model = glm::rotate(model, glm::radians(rotBurguer), glm::vec3(0.0f, 0.0, 1.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Cangreburguer.Draw(shader);
+
+		/*view = camera.GetViewMatrix();
+		model = tmp;
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::translate(model, glm::vec3(3.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Puerta.Draw(shader);*/
+
+		view = camera.GetViewMatrix();
+		model = tmp;
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		model = glm::translate(model, glm::vec3(3.0f, 0.0f, 3.0f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Letreros.Draw(shader);
+
+		view = camera.GetViewMatrix();
+		model = tmp;
+		model = glm::translate(model, glm::vec3(35.0f + movCanX, 1.38f, 1.5f));
+		model = glm::rotate(model, glm::radians(rotCan), glm::vec3(0.0f, 1.0f, 0.0));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Cangrejo.Draw(shader);
+
+		//    Objetos estáticos
+		view = camera.GetViewMatrix();
+		model = tmp;
+		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
+		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+		Edificio.Draw(shader);
+
+		view = camera.GetViewMatrix();
+		model = tmp;
+		model = glm::translate(model, glm::vec3(4.0f, 0.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Poste.Draw(shader);
 
-		
-
+	
 
 		glBindVertexArray(0);
 
@@ -606,44 +669,6 @@ int main()
 	return 0;
 }
 
-
-void animacion()
-{
-
-		//Movimiento del personaje
-
-		if (play)
-		{
-			if (i_curr_steps >= i_max_steps) //end of animation between frames?
-			{
-				playIndex++;
-				if (playIndex>FrameIndex - 2)	//end of total animation?
-				{
-					printf("termina anim\n");
-					playIndex = 0;
-					play = false;
-				}
-				else //Next frame interpolations
-				{
-					i_curr_steps = 0; //Reset counter
-									  //Interpolation
-					interpolation();
-				}
-			}
-			else
-			{
-				//Draw animation
-				posX += KeyFrame[playIndex].incX;
-				posY += KeyFrame[playIndex].incY;
-				posZ += KeyFrame[playIndex].incZ;
-
-				rotRodIzq += KeyFrame[playIndex].rotInc;
-
-				i_curr_steps++;
-			}
-
-		}
-	}
 
 
 // Is called whenever a key is pressed/released via GLFW
@@ -729,10 +754,10 @@ void MouseCallback(GLFWwindow *window, double xPos, double yPos)
 void DoMovement()
 {
 
-	if (keys[GLFW_KEY_1])
+	/*if (keys[GLFW_KEY_1])
 	{
 
-		rot += 1;
+		rotBrazo += 1;
 
 	}
 
@@ -748,31 +773,82 @@ void DoMovement()
 		if (rotRodIzq>-45)
 			rotRodIzq -= 1.0f;
 		
-	}
+	}*/
 
 	
 
 	//Mov Personaje
-	if (keys[GLFW_KEY_H])
+	/*if (keys[GLFW_KEY_H])
 	{
-		posZ += 1;
+		posZ += 0.1;
 	}
 
 	if (keys[GLFW_KEY_Y])
 	{
-		posZ -= 1;
+		posZ -= 0.1;
 	}
 
 	if (keys[GLFW_KEY_G])
 	{
-		posX -= 1;
+		posX -= 0.1;
 	}
 
 	if (keys[GLFW_KEY_J])
 	{
-		posX += 1;
+		posX += 0.1;
+	}*/
+
+	//Activar animaciones
+	
+	if (keys[GLFW_KEY_1]) //ACTIVA ANIMACION DE DON CANGREJO
+	{
+		circuito1 = true;
 	}
 
+	if (keys[GLFW_KEY_2]) //DESACTIVA ANIMACION DE DON CANGREJO
+	{
+		circuito1 = false;
+	}
+
+	if (keys[GLFW_KEY_3]) //ACTIVA ANIMACION DE BOB ESPONJA 1
+	{
+		circuito2 = true;
+	}
+
+	if (keys[GLFW_KEY_4]) //DESACTIVA ANIMACION DE BOB ESPONJA 1
+	{
+		circuito2 = false;
+	}
+
+	if (keys[GLFW_KEY_5]) //ACTIVA ANIMACION DE BOB ESPONJA 2
+	{
+		circuito3 = true;
+	}
+
+	if (keys[GLFW_KEY_6]) //DESACTIVA ANIMACION DE BOB ESPONJA 2
+	{
+		circuito3 = false;
+	}
+
+	if (keys[GLFW_KEY_7]) //ACTIVA ANIMACION DE PUERTAS
+	{
+		circuito4 = true;
+	}
+
+	if (keys[GLFW_KEY_8]) //DESACTIVA ANIMACION DE PUERTAS
+	{
+		circuito4 = false;
+	}
+
+	if (keys[GLFW_KEY_9]) //ACTIVA ANIMACION DE LETREROS
+	{
+		circuito5 = true;
+	}
+
+	if (keys[GLFW_KEY_0]) //ACTIVA ANIMACION DE LETREROS
+	{
+		circuito5 = false;
+	}
 
 
 
@@ -803,8 +879,80 @@ void DoMovement()
 	}
 
 
+}
+
+void animacion()
+{
+
+	//Movimiento de Don Cangrejo
+	if (circuito1)
+	{
+		
+		if (recorrido1)
+		{
+			rotCan = 0;
+			movCanX -= 0.05f;
+			if (movCanX < -20)
+			{
+				recorrido1 = false;
+				recorrido2 = true;
+			}
+		}
+
+		if (recorrido2)
+		{
+			rotCan =180;
+			movCanX += 0.05f;
+			if (movCanX > 0)
+			{
+				recorrido2 = false;
+				recorrido1 = true;
+			}
+		}
+
+		
+	}
+
+	//Movimiento de Bob (brazo)
+	if (circuito2)
+	{
+
+		if (recorrido3)
+		{
+			rotBrazo += 0.3;
+			movBurguerY += 0.01;
+			rotBurguer += 0.1;
+
+			if (rotBrazo > 25)
+			{
+				recorrido3 = false;
+				recorrido4 = true;
+			}
+		}
+
+		if (recorrido4)
+		{
+			rotBurguer += 10;
+			if (rotBurguer > 360)
+			{
+				recorrido4 = false;
+				recorrido5 = true;
+			}
+		}
+
+		if (recorrido5)
+		{
+			rotBrazo -= 0.3;
+			movBurguerY -= 0.01;
+			rotBurguer -= 0.1;
+			if (rotBrazo < 0)
+			{
+				rotBurguer = 0;
+				recorrido5 = false;
+				recorrido3 = true;
+			}
+		}
 
 
-
-
+	}
 }
