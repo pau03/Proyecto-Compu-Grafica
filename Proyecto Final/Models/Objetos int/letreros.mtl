@@ -1,7 +1,7 @@
 # Blender MTL File: 'kk1.blend'
 # Material Count: 8
 
-newmtl 01_-_Default.001
+newmtl 01_-_Default.002
 Ns 18.000005
 Ka 1.000000 1.000000 1.000000
 Kd 0.588235 0.588235 0.588235
@@ -38,7 +38,7 @@ illum 1
 map_Kd Krusty Krab Menu Side.fw.png
 map_d Krusty Krab Menu Side.fw.png
 
-newmtl 07_-_Default.001
+newmtl 07_-_Default.002
 Ns 18.000005
 Ka 1.000000 1.000000 1.000000
 Kd 0.588235 0.588235 0.588235
@@ -50,7 +50,7 @@ illum 1
 map_Kd Krusty Krab Menu Hook1.fw.png
 map_d Krusty Krab Menu Hook1.fw.png
 
-newmtl 08_-_Default.001
+newmtl 08_-_Default.002
 Ns 18.000005
 Ka 1.000000 1.000000 1.000000
 Kd 0.588235 0.588235 0.588235
@@ -62,7 +62,7 @@ illum 1
 map_Kd Krusty Krab Menu Hook2.fw.png
 map_d Krusty Krab Menu Hook2.fw.png
 
-newmtl 09_-_Default.001
+newmtl 09_-_Default.002
 Ns 18.000005
 Ka 1.000000 1.000000 1.000000
 Kd 0.588235 0.588235 0.588235
@@ -74,7 +74,7 @@ illum 1
 map_Kd Rope.fw.png
 map_d Rope.fw.png
 
-newmtl 13_-_Default.001
+newmtl 13_-_Default.002
 Ns 18.000005
 Ka 1.000000 1.000000 1.000000
 Kd 0.588235 0.588235 0.588235

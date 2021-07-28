@@ -158,6 +158,8 @@
   <ItemGroup>
     <None Include="Shaders\modelLoading.frag" />
     <None Include="Shaders\modelLoading.vs" />
+    <None Include="Shaders\SkyBox.frag" />
+    <None Include="Shaders\SkyBox.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -53,8 +53,21 @@ bool active;
 float movCanX = 0.0;
 float rotCan = 0.0;
 float rotBrazo = 0.0f;
+float rotBrazoY = 0.0f;
+float movBrazoX = 0.0;
+float movBrazoZ = 0.0;
+float movBurguerX = 0.0;
 float movBurguerY = 0.0;
+float movBurguerZ = 0.0;
 float rotBurguer = 0.0;
+float movBobX = 0.0;
+float movBobZ = 0.0;
+float rotBob = 0.0f;
+float rotPuerta = 0.0f;
+float rotLet = 0.0f;
+
+bool BobFrente= true;
+bool BobDer = false;
 
 bool circuito1 = false;
 bool circuito2 = false;
@@ -64,38 +77,34 @@ bool circuito5 = false;
 
 bool recorrido1 = true;
 bool recorrido2 = false;
+
 bool recorrido3 = true;
 bool recorrido4 = false;
 bool recorrido5 = false;
+
+bool recorrido6 = true;
+bool recorrido7 = false;
+bool recorrido8 = false;
+bool recorrido9 = false;
+bool recorrido10 = false;
+bool recorrido11 = false;
+
+bool recorrido12 = true;
+bool recorrido13 = false;
+
+bool recorrido14 = true;
+bool recorrido15 = false;
+
 
 // Deltatime
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
 
 // Keyframes
-float posX =PosIni.x, posY = PosIni.y, posZ = PosIni.z, rotRodIzq = 0;
+float posX = PosIni.x, posY = PosIni.y, posZ = PosIni.z;
 
-#define MAX_FRAMES 9
-int i_max_steps = 190;
-int i_curr_steps = 0;
-typedef struct _frame
-{
-	//Variables para GUARDAR Key Frames
-	float posX;		//Variable para PosicionX
-	float posY;		//Variable para PosicionY
-	float posZ;		//Variable para PosicionZ
-	float incX;		//Variable para IncrementoX
-	float incY;		//Variable para IncrementoY
-	float incZ;		//Variable para IncrementoZ
-	float rotRodIzq;
-	float rotInc;
 
-}FRAME;
 
-FRAME KeyFrame[MAX_FRAMES];
-int FrameIndex = 0;			//introducir datos
-bool play = false;
-int playIndex = 0;
 
 // Positions of the point lights
 glm::vec3 pointLightPositions[] = {
@@ -106,45 +115,6 @@ glm::vec3 pointLightPositions[] = {
 };
 
 glm::vec3 LightP1;
-
-
-
-
-void saveFrame(void)
-{
-
-	printf("frameindex %d\n", FrameIndex);
-	
-	KeyFrame[FrameIndex].posX = posX;
-	KeyFrame[FrameIndex].posY = posY;
-	KeyFrame[FrameIndex].posZ = posZ;
-	
-	KeyFrame[FrameIndex].rotRodIzq = rotRodIzq;
-	
-
-	FrameIndex++;
-}
-
-void resetElements(void)
-{
-	posX = KeyFrame[0].posX;
-	posY = KeyFrame[0].posY;
-	posZ = KeyFrame[0].posZ;
-
-	rotRodIzq = KeyFrame[0].rotRodIzq;
-
-}
-
-void interpolation(void)
-{
-
-	KeyFrame[playIndex].incX = (KeyFrame[playIndex + 1].posX - KeyFrame[playIndex].posX) / i_max_steps;
-	KeyFrame[playIndex].incY = (KeyFrame[playIndex + 1].posY - KeyFrame[playIndex].posY) / i_max_steps;
-	KeyFrame[playIndex].incZ = (KeyFrame[playIndex + 1].posZ - KeyFrame[playIndex].posZ) / i_max_steps;
-	
-	KeyFrame[playIndex].rotInc = (KeyFrame[playIndex + 1].rotRodIzq - KeyFrame[playIndex].rotRodIzq) / i_max_steps;
-
-}
 
 
 
@@ -202,7 +172,7 @@ int main()
 
 	Shader lightingShader("Shaders/lighting.vs", "Shaders/lighting.frag");
 	Shader lampShader("Shaders/lamp.vs", "Shaders/lamp.frag");
-	//Shader SkyBoxshader("Shaders/SkyBox.vs", "Shaders/SkyBox.frag");
+	Shader SkyBoxshader("Shaders/SkyBox.vs", "Shaders/SkyBox.frag");
 
 	Shader shader("Shaders/modelLoading.vs", "Shaders/modelLoading.frag");
 
@@ -222,17 +192,6 @@ int main()
 	
 	// Build and compile our shader program
 
-	//Inicialización de KeyFrames
-	
-	for(int i=0; i<MAX_FRAMES; i++)
-	{
-		KeyFrame[i].posX = 0;
-		KeyFrame[i].incX = 0;
-		KeyFrame[i].incY = 0;
-		KeyFrame[i].incZ = 0;
-		KeyFrame[i].rotRodIzq = 0;
-		KeyFrame[i].rotInc = 0;
-	}
 
 
 
@@ -438,7 +397,7 @@ int main()
 
 
 		// Use cooresponding shader when setting uniforms/drawing objects
-		//lightingShader.Use();
+		lightingShader.Use();
 		shader.Use();
 		GLint viewPosLoc = glGetUniformLocation(shader.Program, "viewPos");
 		glUniform3f(viewPosLoc, camera.GetPosition().x, camera.GetPosition().y, camera.GetPosition().z);
@@ -457,55 +416,17 @@ int main()
 		glUniform3f(glGetUniformLocation(lightingShader.Program, "dirLight.specular"), 0.5f, 0.5f, 0.5f);
 
 
-		//// Point light 1
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].position"), pointLightPositions[0].x, pointLightPositions[0].y, pointLightPositions[0].z);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].ambient"), 0.05f, 0.05f, 0.05f);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].diffuse"), LightP1.x, LightP1.y, LightP1.z);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[0].specular"), LightP1.x, LightP1.y, LightP1.z);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].constant"), 1.0f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].linear"), 0.09f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[0].quadratic"), 0.032f);
-
-
-
-		//// Point light 2
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].position"), pointLightPositions[1].x, pointLightPositions[1].y, pointLightPositions[1].z);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].ambient"), 0.05f, 0.05f, 0.05f);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].diffuse"), 1.0f, 1.0f, 0.0f);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[1].specular"), 1.0f, 1.0f, 0.0f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[1].constant"), 1.0f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[1].linear"), 0.09f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[1].quadratic"), 0.032f);
-
-		//// Point light 3
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[2].position"), pointLightPositions[2].x, pointLightPositions[2].y, pointLightPositions[2].z);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[2].ambient"), 0.05f, 0.05f, 0.05f);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[2].diffuse"), 0.0f, 1.0f, 1.0f);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[2].specular"), 0.0f, 1.0f, 1.0f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[2].constant"), 1.0f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[2].linear"), 0.09f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[2].quadratic"), 0.032f);
-
-		//// Point light 4
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[3].position"), pointLightPositions[3].x, pointLightPositions[3].y, pointLightPositions[3].z);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[3].ambient"), 0.05f, 0.05f, 0.05f);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[3].diffuse"), 1.0f, 0.0f, 1.0f);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "pointLights[3].specular"), 1.0f, 0.0f, 1.0f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[3].constant"), 1.0f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[3].linear"), 0.09f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "pointLights[3].quadratic"), 0.032f);
-
-		//// SpotLight
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.position"), camera.GetPosition().x, camera.GetPosition().y, camera.GetPosition().z);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.direction"), camera.GetFront().x, camera.GetFront().y, camera.GetFront().z);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.ambient"), 0.0f, 0.0f, 0.0f);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.diffuse"), 0.0f, 0.0f, 0.0f);
-		//glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.specular"), 0.0f, 0.0f, 0.0f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.constant"), 1.0f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.linear"), 0.09f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.quadratic"), 0.032f);
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.cutOff"), glm::cos(glm::radians(12.5f)));
-		//glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.outerCutOff"), glm::cos(glm::radians(15.0f)));
+		// SpotLight
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.position"), 0.0f, 20.0f, 0.0f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.direction"), 0.0f, -10.0f, 0.0f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.ambient"), 0.0f, 0.0f, 0.0f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.diffuse"), 1.0f, 1.0f, 1.0f);
+		glUniform3f(glGetUniformLocation(lightingShader.Program, "spotLight.specular"), 1.0f, 1.0f, 1.0f);
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.constant"), 1.0f);
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.linear"), 0.09f);
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.quadratic"), 0.032f);
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.cutOff"), glm::cos(glm::radians(12.5f)));
+		glUniform1f(glGetUniformLocation(lightingShader.Program, "spotLight.outerCutOff"), glm::cos(glm::radians(15.0f)));
 
 		// Set material properties
 		glUniform1f(glGetUniformLocation(shader.Program, "material.shininess"), 32.0f);
@@ -541,39 +462,63 @@ int main()
 
 		view = camera.GetViewMatrix();
 		glm::mat4 model(1);
-		tmp = glm::translate(model, glm::vec3(PosIni.x, PosIni.y,PosIni.z));
-		model = glm::translate(model, glm::vec3(posX, posY, posZ));
+		tmp = model = glm::translate(model, glm::vec3(PosIni.x, PosIni.y,PosIni.z));
+		model = glm::translate(model, glm::vec3(-2.40f + movBobX, 1.06f, -0.55f + movBobZ));
+		model = glm::rotate(model, glm::radians(rotBob), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		BobEsponja.Draw(shader);
 
 		view = camera.GetViewMatrix();
 		model = tmp;
-		model = glm::translate(model, glm::vec3(-2.43f, 1.0f, -1.15f));
-		model = glm::rotate(model, glm::radians(8.5f + rotBrazo), glm::vec3(0.0f, 0.0, 1.0f));
+		model = glm::translate(model, glm::vec3(-2.43f + movBobX + movBrazoX, 1.08f, -1.15f + movBobZ + movBrazoZ));
+		if(BobFrente){
+			model = glm::rotate(model, glm::radians(8.5f + rotBrazo), glm::vec3(0.0f, 0.0, 1.0f));
+		}
+		else {
+			if (BobDer) {
+				model = glm::rotate(model, glm::radians(-8.5f - rotBrazo), glm::vec3(1.0f, 0.0, 0.0f));
+			}
+			else {
+				model = glm::rotate(model, glm::radians(8.5f + rotBrazo), glm::vec3(1.0f, 0.0, 0.0f));
+			}
+		}
+		model = glm::rotate(model, glm::radians(rotBob), glm::vec3(0.0f, 1.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Brazo.Draw(shader);
 
 		view = camera.GetViewMatrix();
 		model = tmp;
-		model = glm::translate(model, glm::vec3(-1.6f, movBurguerY + 1.24f, -1.17f));
-		model = glm::rotate(model, glm::radians(rotBurguer), glm::vec3(0.0f, 0.0, 1.0f));
+		model = glm::translate(model, glm::vec3(movBurguerX + movBobX - 1.6f, movBurguerY + 1.32f, movBurguerZ + movBobZ - 1.17f));
+		if (BobFrente) {
+			model = glm::rotate(model, glm::radians(rotBurguer), glm::vec3(0.0f, 0.0, 1.0f));
+		}
+		else {
+			if (BobDer) {
+				model = glm::rotate(model, glm::radians(rotBurguer), glm::vec3(1.0f, 0.0, 0.0f));
+			}
+			else {
+				model = glm::rotate(model, glm::radians(-rotBurguer), glm::vec3(1.0f, 0.0, 0.0f));
+			}
+		}
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Cangreburguer.Draw(shader);
 
-		/*view = camera.GetViewMatrix();
+		view = camera.GetViewMatrix();
 		model = tmp;
-		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-		model = glm::translate(model, glm::vec3(3.0f, 0.0f, 3.0f));
+		model = glm::scale(model, glm::vec3(0.5f, 0.49f, 0.5f));
+		model = glm::translate(model, glm::vec3(10.4f, 2.55f, 2.55f));
+		model = glm::rotate(model, glm::radians(rotPuerta), glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
-		Puerta.Draw(shader);*/
+		Puerta.Draw(shader);
 
 		view = camera.GetViewMatrix();
 		model = tmp;
 		model = glm::scale(model, glm::vec3(0.5f, 0.5f, 0.5f));
-		model = glm::translate(model, glm::vec3(3.0f, 0.0f, 3.0f));
+		model = glm::translate(model, glm::vec3(2.0f, 13.0f, 3.0f));
+		model = glm::rotate(model, glm::radians(rotLet), glm::vec3(0.0f, 0.0f, 1.0f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Letreros.Draw(shader);
 
@@ -593,7 +538,7 @@ int main()
 
 		view = camera.GetViewMatrix();
 		model = tmp;
-		model = glm::translate(model, glm::vec3(4.0f, 0.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(7.5f, -0.8f, 0.3f));
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		Poste.Draw(shader);
 
@@ -630,19 +575,19 @@ int main()
 
 
 		// Draw skybox as last
-		//glDepthFunc(GL_LEQUAL);  // Change depth function so depth test passes when values are equal to depth buffer's content
-		//SkyBoxshader.Use();
-		//view = glm::mat4(glm::mat3(camera.GetViewMatrix()));	// Remove any translation component of the view matrix
-		//glUniformMatrix4fv(glGetUniformLocation(SkyBoxshader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
-		//glUniformMatrix4fv(glGetUniformLocation(SkyBoxshader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
+		glDepthFunc(GL_LEQUAL);  // Change depth function so depth test passes when values are equal to depth buffer's content
+		SkyBoxshader.Use();
+		view = glm::mat4(glm::mat3(camera.GetViewMatrix()));	// Remove any translation component of the view matrix
+		glUniformMatrix4fv(glGetUniformLocation(SkyBoxshader.Program, "view"), 1, GL_FALSE, glm::value_ptr(view));
+		glUniformMatrix4fv(glGetUniformLocation(SkyBoxshader.Program, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
 
 		// skybox cube
-		//glBindVertexArray(skyboxVAO);
-		//glActiveTexture(GL_TEXTURE1);
-		//glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
-		//glDrawArrays(GL_TRIANGLES, 0, 36);
-		//glBindVertexArray(0);
-		//glDepthFunc(GL_LESS); // Set depth function back to default
+		glBindVertexArray(skyboxVAO);
+		glActiveTexture(GL_TEXTURE1);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, cubemapTexture);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glBindVertexArray(0);
+		glDepthFunc(GL_LESS); // Set depth function back to default
 
 
 
@@ -674,34 +619,6 @@ int main()
 // Is called whenever a key is pressed/released via GLFW
 void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode)
 {
-	if (keys[GLFW_KEY_L])
-	{
-		if (play == false && (FrameIndex > 1))
-		{
-
-			resetElements();
-			//First Interpolation				
-			interpolation();
-
-			play = true;
-			playIndex = 0;
-			i_curr_steps = 0;
-		}
-		else
-		{
-			play = false;
-		}
-
-	}
-
-	if (keys[GLFW_KEY_K])
-	{
-		if (FrameIndex<MAX_FRAMES)
-		{
-			saveFrame();
-		}
-
-	}
 
 
 	if (GLFW_KEY_ESCAPE == key && GLFW_PRESS == action)
@@ -753,50 +670,6 @@ void MouseCallback(GLFWwindow *window, double xPos, double yPos)
 // Moves/alters the camera positions based on user input
 void DoMovement()
 {
-
-	/*if (keys[GLFW_KEY_1])
-	{
-
-		rotBrazo += 1;
-
-	}
-
-	if (keys[GLFW_KEY_2])
-	{
-		if (rotRodIzq<80.0f)
-			rotRodIzq += 1.0f;
-			
-	}
-
-	if (keys[GLFW_KEY_3])
-	{
-		if (rotRodIzq>-45)
-			rotRodIzq -= 1.0f;
-		
-	}*/
-
-	
-
-	//Mov Personaje
-	/*if (keys[GLFW_KEY_H])
-	{
-		posZ += 0.1;
-	}
-
-	if (keys[GLFW_KEY_Y])
-	{
-		posZ -= 0.1;
-	}
-
-	if (keys[GLFW_KEY_G])
-	{
-		posX -= 0.1;
-	}
-
-	if (keys[GLFW_KEY_J])
-	{
-		posX += 0.1;
-	}*/
 
 	//Activar animaciones
 	
@@ -909,7 +782,6 @@ void animacion()
 				recorrido1 = true;
 			}
 		}
-
 		
 	}
 
@@ -921,7 +793,7 @@ void animacion()
 		{
 			rotBrazo += 0.3;
 			movBurguerY += 0.01;
-			rotBurguer += 0.1;
+			rotBurguer += 0.25;
 
 			if (rotBrazo > 25)
 			{
@@ -932,7 +804,7 @@ void animacion()
 
 		if (recorrido4)
 		{
-			rotBurguer += 10;
+			rotBurguer += 5;
 			if (rotBurguer > 360)
 			{
 				recorrido4 = false;
@@ -944,7 +816,7 @@ void animacion()
 		{
 			rotBrazo -= 0.3;
 			movBurguerY -= 0.01;
-			rotBurguer -= 0.1;
+			rotBurguer -= 0.25;
 			if (rotBrazo < 0)
 			{
 				rotBurguer = 0;
@@ -952,7 +824,155 @@ void animacion()
 				recorrido3 = true;
 			}
 		}
+	}
 
+	//Movimiento de Bob (camina)
+	if (circuito3)
+	{
+
+		if (recorrido6)
+		{
+			BobDer = true;
+			rotBob = -90;
+			movBobZ += 0.02f;
+			movBrazoX = 0.65;
+			movBrazoZ = 0.6;
+			movBurguerX = -0.15;
+			movBurguerZ = 1.39;
+			BobFrente = false;
+			if (movBobZ > 4)
+			{
+				recorrido6 = false;
+				recorrido7 = true;
+			}
+		}
+
+		if (recorrido7)
+		{
+			BobDer = false;
+			rotBob = 90;
+			movBobZ -= 0.02f;
+			movBrazoX = -0.57;
+			movBrazoZ = 0.6;
+			movBurguerX = -1.4;
+			movBurguerZ = -0.2;
+			if (movBobZ < 0)
+			{
+				recorrido7 = false;
+				recorrido8 = true;
+			}
+		}
+
+		if (recorrido8)
+		{
+			rotBob = 0;
+			movBobX += 0.01f;
+			movBrazoZ = 0.0;
+			movBrazoX = 0.0;
+			BobFrente = true;
+			movBurguerX = -0.05;
+			movBurguerZ = 0.0;
+			if (movBobX > 0.35)
+			{
+				recorrido8 = false;
+				recorrido9 = true;
+			}
+		}
+
+		if (recorrido9)
+		{
+			movBobX -= 0.01f;
+			if (movBobX < 0)
+			{
+				recorrido9 = false;
+				recorrido10 = true;
+			}
+		}
+
+		if (recorrido10)
+		{
+			BobFrente = false;
+			rotBob = 90;
+			movBobZ -= 0.02f;
+			movBrazoZ = 0.69;
+			movBrazoX = -0.57;
+			movBurguerX = -1.41;
+			movBurguerZ = -0.1;
+			if (movBobZ < -4)
+			{
+				recorrido10 = false;
+				recorrido11 = true;
+			}
+		}
+
+		if (recorrido11)
+		{
+			BobDer = true;
+			rotBob = -90;
+			movBobZ += 0.02f;
+			movBrazoZ = 0.55;
+			movBrazoX = 0.62;
+			movBurguerX = -0.18;
+			movBurguerZ = 1.39;
+			if (movBobZ > 0)
+			{
+				recorrido11 = false;
+				recorrido6 = true;
+			}
+		}
 
 	}
+
+	//Movimiento de Puerta
+	if (circuito4)
+	{
+
+		if (recorrido12)
+		{
+			rotPuerta += 0.25;
+			if (rotPuerta > 65)
+			{
+				recorrido12 = false;
+				recorrido13 = true;
+			}
+		}
+
+		if (recorrido13)
+		{
+			rotPuerta -= 0.1;
+			if (rotPuerta < 25)
+			{
+				recorrido13 = false;
+				recorrido12 = true;
+			}
+		}
+
+	}
+
+	//Movimiento de Letrero
+	if (circuito5)
+	{
+
+		if (recorrido14)
+		{
+			rotLet-= 0.08;
+			if (rotLet < -8)
+			{
+				recorrido14 = false;
+				recorrido15 = true;
+			}
+		}
+
+		if (recorrido15)
+		{
+			rotLet += 0.05;
+			if (rotLet > 0.5)
+			{
+				recorrido15 = false;
+				recorrido14 = true;
+			}
+		}
+
+	}
+
 }
