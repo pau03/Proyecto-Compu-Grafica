@@ -1,0 +1,49 @@
+# Blender MTL File: 'kk1.blend'
+# Material Count: 4
+
+newmtl 01_-_Default.001
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Krusty Krab Hat.fw.png
+map_d Krusty Krab Hat.fw.png
+
+newmtl 02_-_Default.002
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Krusty Krab Hat2.fw.png
+map_d Krusty Krab Hat2.fw.png
+
+newmtl 03_-_Default.002
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Krusty Krab Hat3.fw.png
+map_d Krusty Krab Hat3.fw.png
+
+newmtl mat_0-spongebob.jpg.002
+Ns 9.849156
+Ka 1.000000 1.000000 1.000000
+Kd 0.698039 0.698039 0.698039
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd spongebob.jpg

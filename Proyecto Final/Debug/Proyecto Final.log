@@ -1,33 +1,38 @@
 ﻿  Main_prac11.cpp
 C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(384,24): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(656,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
 C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(657,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(658,11): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(661,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
 C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(662,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(663,18): warning C4244: 'inicializando': conversión de 'double' a 'GLfloat'; posible pérdida de datos
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(664,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
 C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(665,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(666,10): warning C4244: '=': conversión de 'double' a 'GLfloat'; posible pérdida de datos
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(795,19): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(796,23): warning C4305: '+=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(818,19): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(819,23): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(839,20): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(840,19): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(841,23): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(842,22): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(856,21): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(857,19): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(794,19): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(795,23): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(817,19): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(818,23): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(838,20): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(839,19): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(840,23): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(841,22): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(855,21): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(856,19): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(857,22): warning C4305: '=': truncamiento de 'double' a 'float'
 C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(858,22): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(859,22): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(874,23): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(898,20): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(899,21): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(900,23): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(901,22): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(873,23): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(897,20): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(898,21): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(899,23): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(900,22): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(913,20): warning C4305: '=': truncamiento de 'double' a 'float'
 C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(914,20): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(915,20): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(916,23): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(917,22): warning C4305: '=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(943,20): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(959,17): warning C4305: '-=': truncamiento de 'double' a 'float'
-C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(969,18): warning C4305: '+=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(915,23): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(916,22): warning C4305: '=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(942,20): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(958,17): warning C4305: '-=': truncamiento de 'double' a 'float'
+C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Proyecto Final\Main_prac11.cpp(968,18): warning C4305: '+=': truncamiento de 'double' a 'float'
+LINK : warning LNK4098: la biblioteca predeterminada'MSVCRT' entra en conflicto con otras bibliotecas; use la biblioteca /NODEFAULTLIB:biblioteca
+soil2-debug.lib(etc1_utils.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(etc1_utils.obj)' o en 'C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(image_DXT.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_DXT.obj)' o en 'C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(image_helper.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(image_helper.obj)' o en 'C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
+soil2-debug.lib(SOIL2.obj) : warning LNK4099: no se encontró PDB 'soil2-debug.pdb' con 'soil2-debug.lib(SOIL2.obj)' o en 'C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Debug\soil2-debug.pdb'; se vinculará el objeto sin tener en cuenta información de depuración
   Proyecto Final.vcxproj -> C:\Users\pauli\Documents\FI\2021-2\Compu Gráfica\Lab\Proyecto Final\Proyecto Final\Debug\Proyecto Final.exe

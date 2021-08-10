@@ -53,7 +53,6 @@ bool active;
 float movCanX = 0.0;
 float rotCan = 0.0;
 float rotBrazo = 0.0f;
-float rotBrazoY = 0.0f;
 float movBrazoX = 0.0;
 float movBrazoZ = 0.0;
 float movBurguerX = 0.0;
@@ -66,7 +65,7 @@ float rotBob = 0.0f;
 float rotPuerta = 0.0f;
 float rotLet = 0.0f;
 
-bool BobFrente= true;
+bool BobFrente = true;
 bool BobDer = false;
 
 bool circuito1 = false;
@@ -100,7 +99,7 @@ bool recorrido15 = false;
 GLfloat deltaTime = 0.0f;	// Time between current frame and last frame
 GLfloat lastFrame = 0.0f;  	// Time of last frame
 
-// Keyframes
+
 float posX = PosIni.x, posY = PosIni.y, posZ = PosIni.z;
 
 
@@ -118,6 +117,12 @@ glm::vec3 LightP1;
 
 
 
+/*Función: main
+* Parámetros: Ninguno
+* Tipo de retorno: int (entero)
+* Descripción: Dentro de esta función se va construyendo todo el espacio, 
+* con modelos, skybox y demás.
+* */
 
 int main()
 {
@@ -615,6 +620,13 @@ int main()
 }
 
 
+/*Función: KeyCallback
+* Parámetros: GLFWwindow *window, int key, int scancode, int action, int mode
+* Tipo de retorno: void (vacío)
+* Descripción: Función que es llamada cuando se presiona o suelta una tecla,
+* manda cerrar una ventana si se presiona ESC, activa y desactiva una bandera
+* depndiendo de si se presiona o se suelta una tecla.
+* */
 
 // Is called whenever a key is pressed/released via GLFW
 void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode)
@@ -638,16 +650,14 @@ void KeyCallback(GLFWwindow *window, int key, int scancode, int action, int mode
 		}
 	}
 
-	if (keys[GLFW_KEY_SPACE])
-	{
-		active = !active;
-		if (active)
-			LightP1 = glm::vec3(1.0f, 0.0f, 0.0f);
-		else
-			LightP1 = glm::vec3(0.0f, 0.0f, 0.0f);
-	}
+	
 }
 
+/*Función: MouseCallback
+* Parámetros: GLFWwindow *window, double xPos, double yPos
+* Tipo de retorno: void (vacío)
+* Descripción: Guarda las ultimas posiciones del mouse
+* */
 void MouseCallback(GLFWwindow *window, double xPos, double yPos)
 {
 
@@ -667,7 +677,13 @@ void MouseCallback(GLFWwindow *window, double xPos, double yPos)
 	camera.ProcessMouseMovement(xOffset, yOffset);
 }
 
-// Moves/alters the camera positions based on user input
+/*Función: 
+* Parámetros: Ninguno
+* Tipo de retorno: void (vacío)
+* Descripción: Función que asigna a cada tecla la acción de activar
+* o desactivar cada animación, además de los controles de la cámara
+* */
+
 void DoMovement()
 {
 
@@ -753,6 +769,14 @@ void DoMovement()
 
 
 }
+
+
+/*Función: animacion
+* Parámetros: Ninguno
+* Tipo de retorno: void (vacío)
+* Descripción: Función que realiza los movimientos que corresponden a cada momento de 
+* las animaciones, según se hayan activado y en qué recorrido se encuentren
+* */
 
 void animacion()
 {

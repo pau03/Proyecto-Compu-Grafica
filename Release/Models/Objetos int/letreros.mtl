@@ -1,0 +1,100 @@
+# Blender MTL File: 'kk1.blend'
+# Material Count: 8
+
+newmtl 01_-_Default.002
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Bump -bm 0.980000 Krusty Krab Menu.png_specular.jpg
+map_Kd Krusty Krab Menu.png
+map_d Krusty Krab Menu.png
+
+newmtl 02_-_Default.001
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Krusty Krab Menu Back.fw.png
+map_d Krusty Krab Menu Back.fw.png
+
+newmtl 03_-_Default.001
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Krusty Krab Menu Side.fw.png
+map_d Krusty Krab Menu Side.fw.png
+
+newmtl 07_-_Default.002
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Krusty Krab Menu Hook1.fw.png
+map_d Krusty Krab Menu Hook1.fw.png
+
+newmtl 08_-_Default.002
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Krusty Krab Menu Hook2.fw.png
+map_d Krusty Krab Menu Hook2.fw.png
+
+newmtl 09_-_Default.002
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Rope.fw.png
+map_d Rope.fw.png
+
+newmtl 13_-_Default.002
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Bump Order Here.fw.png_specular.jpg
+map_Kd Order Here.fw.png
+map_d Order Here.fw.png
+
+newmtl 14_-_Default.001
+Ns 18.000005
+Ka 1.000000 1.000000 1.000000
+Kd 0.588235 0.588235 0.588235
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 1
+map_Kd Order Here2.fw.png
+map_d Order Here2.fw.png
